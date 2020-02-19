@@ -75,12 +75,11 @@ export const TextProntuario = styled.Text`
 `;
 
 export const Form = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: true,
   contentContainerStyle: {
     paddingRight: 10,
     paddingLeft: 10,
     paddingTop: 10,
-    // padding: 15,
   },
 })`
   align-self: stretch;
@@ -96,7 +95,7 @@ export const ContainerData = styled.TouchableOpacity`
 `;
 
 export const List = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: true,
   // contentContainerStyle: { padding: 30 },
 })`
   align-self: stretch;

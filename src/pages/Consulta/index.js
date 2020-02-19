@@ -30,7 +30,7 @@ import {createConsulta} from '~/store/modules/consulta/actions';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
 import * as theme from '~/theme';
-YellowBox.ignoreWarnings(['Warning: DatePickerAndroid has been merged']);
+YellowBox.ignoreWarnings(['Warning: DatePickerAndroid has been merged','Warning: TimePickerAndroid has been merged']);
 
 export default Consulta = ({navigation}) => {
   const dispatch = useDispatch();
@@ -182,7 +182,7 @@ export default Consulta = ({navigation}) => {
             date={horaInicio}
             mode="time"
             placeholder="Hora inicio"
-            format="HH:MM"
+            format="HH:mm"
             confirmBtnText="OK"
             cancelBtnText="Cancel"
             customStyles={{
@@ -209,7 +209,7 @@ export default Consulta = ({navigation}) => {
             date={horaFim}
             mode="time"
             placeholder="Hora Fim"
-            format="HH:MM"
+            format="HH:mm"
             confirmBtnText="OK"
             cancelBtnText="Cancel"
             customStyles={{

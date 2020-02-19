@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Picker, YellowBox} from 'react-native';
+import {Picker, YellowBox,  SafeAreaView} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import {
   Form,

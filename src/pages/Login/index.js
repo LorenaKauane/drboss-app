@@ -49,7 +49,7 @@ export default function Login({ navigation }) {
       dispatch(signInRequest(email, senha));
       return ;
     }
-   
+
   };
 
   return (

@@ -68,7 +68,7 @@ export const ContainerHeader = styled.View`
 export const ContainerStatus = styled.View`
   justify-content: flex-end;
   flex: 1;
-  padding-top: 35px;
+  padding-top: 15px;
   padding-bottom: 35px;
   padding-left: 50px;
 `;
@@ -76,7 +76,7 @@ export const TextLeft = styled.Text`
   font-family: ${theme.fonts.MONTSERRAT};
   color: ${theme.colors.WHITE};
   justify-content: center;
-  font-size: ${35};
+  font-size: ${27};
 `;
 
 export const TextTotal = styled.Text`

@@ -133,7 +133,6 @@ export default function Dashboard({navigation}) {
       `consulta/${inicioMes}/${fimMes}/statusConsulta`
     );
 
-    console.log(response)
     setMarketDate(response.data);
   };
 
@@ -203,10 +202,6 @@ export default function Dashboard({navigation}) {
         </Inner>
       </Container>
       <FooterContainer>
-        {/*
-      <TouchableOpacity onPress={() => navigation.navigate('CadastroUsuario')}>
-                <TextoCadastro>Cadastre-se</TextoCadastro>
-              </TouchableOpacity> */}
         <BotaoCadastraConsulta onPress={() => navigation.navigate('Consulta')}>
           <Text style={{fontSize: 45, color: theme.colors.WHITE}}>+</Text>
         </BotaoCadastraConsulta>
@@ -244,7 +239,6 @@ Dashboard.navigationOptions = {
             {nomeUsuario.length > 7
               ? nomeUsuario.substring(0, 7) + '...'
               : nomeUsuario}
-            ! Seu app de gerenciamento de consultas!
           </TextBemVindo>
         </RowHeader>
 

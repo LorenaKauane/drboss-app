@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 import * as theme from '~/theme';
 // import api from '~/services/api';
 
-
 // ou view
 export const Container = styled.TouchableOpacity`
   flex: 1;

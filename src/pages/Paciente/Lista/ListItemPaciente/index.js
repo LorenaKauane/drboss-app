@@ -19,7 +19,7 @@ import {
 const ListItemPaciente = ({data, navigation}) => {
   const dispatch = useDispatch();
 
-  const teste = () => {
+  const editaPaciente = () => {
     dispatch(selecionaPaciente(data));
     navigation.navigate('CadastroPaciente');
   };
@@ -51,7 +51,7 @@ const ListItemPaciente = ({data, navigation}) => {
 
   return (
     <ScrollView>
-      <Container onPress={teste}>
+      <Container onPress={editaPaciente}>
         <Avatar
           source={{
             uri: `${api.defaults.baseURL}uploads/paciente/${

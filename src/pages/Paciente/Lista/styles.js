@@ -16,7 +16,7 @@ export const Container = styled.View`
 // `;
 
 export const Inner = styled.View`
-  padding: 0 30px;
+  padding: 0px 30px;
   align-self: stretch;
 `;
 
@@ -25,8 +25,8 @@ export const HeaderBackground = styled(LinearGradient).attrs({
 })`
   /* justify-content:center;
   align-items:center; */
-  top:-50;
-  height: ${theme.sizes.IMAGE_HEIGHT - 50};
+  top: -50;
+  height: ${theme.sizes.IMAGE_HEIGHT - 70};
   border-bottom-left-radius: 60;
   border-bottom-right-radius: 60;
 `;
@@ -47,16 +47,16 @@ export const ContainerAvatar = styled.View`
 
 export const RowInformation = styled.View`
   flex: 1;
-  top:-25;
+  top: -25;
   flex-direction: column;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const RowSearch = styled.View`
   flex: 1;
-  top:2;
-  padding-left: ${theme.sizes.WIDTH - (theme.sizes.WIDTH - 60) };
+  /* top:2; */
+  padding-left: ${theme.sizes.WIDTH - (theme.sizes.WIDTH - 60)};
 `;
 
 export const FormInput = styled(Input)`
@@ -65,6 +65,8 @@ export const FormInput = styled(Input)`
   flex-direction: row;
   border-radius: 50;
   border-bottom-width: 0;
+
+  margin-bottom: 25px;
 `;
 
 export const ContainerHeader = styled.View`
@@ -133,7 +135,7 @@ export const TextData = styled.Text`
 `;
 
 export const TextMes = styled.Text`
-    font-family: ${props =>
+  font-family: ${props =>
     !props.isShowListConsulta
       ? theme.fonts.MONTSERRAT_BOLD
       : theme.fonts.MONTSERRAT};

@@ -64,9 +64,9 @@ export default function CadastroPaciente({navigation}) {
 
   return (
     <KeyBoard>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
         <Inner>
-          <ScrollView>
+          <ScrollView  keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag'>
             {paciente.id && (
               <RowData>
                 <TouchableOpacity onPress={buscaDadoPaciente}>
@@ -87,7 +87,7 @@ export default function CadastroPaciente({navigation}) {
             )}
           </ScrollView>
         </Inner>
-      </TouchableWithoutFeedback>
+      {/* </TouchableWithoutFeedback> */}
     </KeyBoard>
   );
 }
