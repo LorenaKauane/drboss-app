@@ -8,15 +8,8 @@ export const Container = styled.View`
   flex: 1;
 `;
 
-// export const Inner = styled.ScrollView.attrs({
-//   showsVerticalScrollIndicator: false,
-//   contentContainerStyle: {padding: 30},
-// })`
-//   align-self: stretch;
-// `;
-
 export const Inner = styled.View`
-  padding: 30px;
+  padding: 5px 30px;
   align-self: stretch;
 `;
 
@@ -132,7 +125,7 @@ export const TextData = styled.Text`
 `;
 
 export const TextMes = styled.Text`
-    font-family: ${props =>
+  font-family: ${props =>
     !props.isShowListConsulta
       ? theme.fonts.MONTSERRAT_BOLD
       : theme.fonts.MONTSERRAT};

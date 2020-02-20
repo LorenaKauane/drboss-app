@@ -137,6 +137,7 @@ import ListaPaciente from '~/pages/Paciente/Lista';
 import CadastroPaciente from '~/pages/Paciente/Cadastro';
 import Servico from '~/pages/Servico';
 import Consulta from '~/pages/Consulta';
+import Configuracao from '~/pages/Configuração';
 
 const DashboardNavigator = createStackNavigator({
   Dashboard: {
@@ -162,11 +163,18 @@ const ServicoNavigator = createStackNavigator({
   },
 });
 
+const ConfiguracaoNavigator = createStackNavigator({
+  Configuracao: {
+    screen: Configuracao,
+  },
+});
+
 const RootStack = createDrawerNavigator({
   //colocar dashboard primeiro
   Dashboard: DashboardNavigator,
   Paciente: PacienteNavigator,
   Serviço: ServicoNavigator,
+  Configuração: ConfiguracaoNavigator,
 });
 
 export default (isSigned = false) =>

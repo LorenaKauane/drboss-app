@@ -153,9 +153,6 @@ export default function Dashboard({navigation}) {
             <ShimmerPlaceHolder
               autoRun={true}
               visible={consulta.loadingConsultas && marketDate !== null}>
-              {/* <TouchableOpacity onPress={sair}>
-                <Text>Dashboard/sair </Text>
-              </TouchableOpacity> */}
               <RowData>
                 <TouchableOpacity onPress={buscaData}>
                   <TextData isShowListConsulta={isShowListConsulta}>
