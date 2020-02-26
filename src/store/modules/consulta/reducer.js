@@ -31,6 +31,13 @@ export default function consulta(state = INITIAL_STATE, action) {
         draft.loadingConsultas = false;
         break;
       }
+      case 'DELETE_CONSULTA': {
+        const {id} = action.payload;
+        const consultas = draft.consultas.filter(
+          consulta => consulta.id !== id
+        );
+        draft.consultas = consultas;
+      }
       default:
     }
   });

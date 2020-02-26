@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView, TouchableOpacity} from 'react-native';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {valorDinheiro} from '~/util/mask';
 import {
   Container,
   Inner,
@@ -23,7 +24,7 @@ export default Servico = ({navigation}) => {
   const servico = useSelector(state => state.servico);
   const [error, setError] = useState(null);
   const [nome, setNome] = useState('');
-  const [valor, setValor] = useState('');
+  const [valor, setValor] = useState(0);
 
   const nomeRef = useRef();
 
@@ -78,8 +79,8 @@ export default Servico = ({navigation}) => {
             placeholder="Valor"
             returnKeyType="next"
             ref={nomeRef}
-            value={valor}
-            onChangeText={setValor}
+            value={valorDinheiro(valor)}
+            onChangeText={v => setValor(valorDinheiro(v))}
             keyboardType={'numeric'}
           />
           {error && <TextError>{error}</TextError>}

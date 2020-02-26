@@ -54,7 +54,7 @@ export const TextError = styled.Text`
 `;
 
 export const RowData = styled.View`
-  padding: 30px 30px 0px;
+  padding-top: 10px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -74,10 +74,22 @@ export const TextProntuario = styled.Text`
   color: ${theme.colors.FONTE};
 `;
 
+export const ContainerDataButton = styled.TouchableOpacity`
+  flex-direction: column;
+  align-items: center;
+  background-color: ${theme.colors.AZUL_ESCURO};
+  padding: 10px;
+
+  margin-bottom: 36;
+  border-radius: ${theme.sizes.RADIUS_BUTTON};
+`;
+
 export const Form = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: true,
   contentContainerStyle: {
-    padding: 10,
+    paddingRight: 10,
+    paddingLeft: 10,
+    paddingTop: 10,
   },
 })`
   align-self: stretch;
@@ -93,7 +105,7 @@ export const ContainerData = styled.TouchableOpacity`
 `;
 
 export const List = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: true,
   // contentContainerStyle: { padding: 30 },
 })`
   align-self: stretch;

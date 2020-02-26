@@ -35,7 +35,7 @@ export default Configuracao = ({navigation}) => {
     <Container>
       <Inner>
         <Form>
-          <TextInfoBold>Nome: {auth.usuario}</TextInfoBold>
+          <TextInfoBold>Nome: {auth.usuario.nome}</TextInfoBold>
           <TextInfoBold>Seu plano: Free</TextInfoBold>
           <TextInfoBold>Deseja mudar de plano? Acesse nosso site!</TextInfoBold>
           <Button onPress={sair}>Sair</Button>

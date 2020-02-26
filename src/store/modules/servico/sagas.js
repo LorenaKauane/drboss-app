@@ -24,16 +24,17 @@ export function* getServico() {
 export function* salvarServico({payload}) {
   try {
     const {nome, valor} = payload.data;
+    console.log(nome, valor);
     const response = yield call(api.post, 'servico', {
       nome,
       valor,
     });
 
     Alert.alert('Salvo!', 'Cadastro salvo com sucesso!');
-    console.log(response.data);
+
     yield put(addServico(response.data));
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
     Alert.alert('Falha!', 'Falhou ao salvar servico');
     yield put(createServicoFailure());
   }

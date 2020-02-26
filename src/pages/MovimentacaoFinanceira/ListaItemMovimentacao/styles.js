@@ -5,7 +5,7 @@ import * as theme from '~/theme';
 // ou view
 export const Container = styled.View`
   flex: 1;
-  height: 90;
+  height: 100;
   margin-top: 16;
   background-color: ${props => props.color || theme.colors.AZUL_CLARO};
   padding: 16px;

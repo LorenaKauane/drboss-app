@@ -83,11 +83,12 @@ export default function Dashboard({navigation}) {
   const consulta = useSelector(state => state.consulta);
   const auth = useSelector(state => state.auth);
 
-  nomeUsuario = auth.usuario ? auth.usuario : '';
+  nomeUsuario = auth.usuario ? auth.usuario.nome : '';
 
   useEffect(() => {
     let inicioDia = format(startOfDay(new Date()), 'yyyy-MM-dd HH:mm');
     let fimDia = format(endOfDay(new Date()), 'yyyy-MM-dd HH:mm');
+    console.log(inicioDia, fimDia);
     dispatch(getConsulta(inicioDia, fimDia));
   }, []);
 

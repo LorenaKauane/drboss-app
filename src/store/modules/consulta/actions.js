@@ -37,3 +37,10 @@ export function createConsultaFailure() {
     type: 'CREATE_CONSULTA_FAILURE',
   };
 }
+
+export function deleteConsulta({id}) {
+  return {
+    type: 'DELETE_CONSULTA',
+    payload: {id},
+  };
+}

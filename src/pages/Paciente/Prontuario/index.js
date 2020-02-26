@@ -19,12 +19,15 @@ import {
 } from './styles';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import ListItemProntuario from './ListItemProntuario';
+import {format} from 'date-fns';
+import ptBrLocale from 'date-fns/locale/pt-BR';
 import Input from '~/components/Input';
 import Button from '~/components/Button';
 import {
   createProntuario,
   getAllProntuarioPaciente,
 } from '~/store/modules/prontuario/actions';
+import {dataSemHoras} from '~/util/mask';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import api from '~/services/api';
 import * as theme from '~/theme';
@@ -44,7 +47,11 @@ export default function CadastroPaciente({navigation}) {
   const telefone1Ref = useRef();
 
   const [error, setError] = useState(null);
-  const [data, setData] = useState('');
+  const [data, setData] = useState(
+    format(new Date(), 'dd/MM/yyyy', {
+      locale: ptBrLocale,
+    })
+  );
   const [anotacao, setAnotacao] = useState('');
   const [images, setImages] = useState([]);
 
@@ -108,7 +115,20 @@ export default function CadastroPaciente({navigation}) {
   return (
     <>
       <Form>
-        <DatePicker
+        <Input
+          autoCorrect={false}
+          autoCapitalize="none"
+          placeholder="Data inicio DD/MM/YYYY"
+          returnKeyType="next"
+          value={dataSemHoras(data)}
+          onChangeText={v => {
+            if (v.length < 11) {
+              setData(dataSemHoras(v));
+            }
+          }}
+          keyboardType={'numeric'}
+        />
+        {/* <DatePicker
           // style={{width: 350, paddingBottom: 20, flex: 1}}
           style={{flex: 1, width: theme.sizes.width, paddingBottom: 20}}
           date={data}
@@ -135,7 +155,7 @@ export default function CadastroPaciente({navigation}) {
           }}
           showIcon={false}
           onDateChange={date => setData(date)}
-        />
+        /> */}
         <Input
           autoCorrect={false}
           autoCapitalize="none"
@@ -199,16 +219,6 @@ export default function CadastroPaciente({navigation}) {
           )}
         </ShimmerPlaceHolder>
       </ScrollView>
-
-      {/* <ContainerListItemProntuario>
-          <TextInfoBold>Lista de Prontuários</TextInfoBold>
- align-self: stretch;
-          <ProvidersListProntuarios
-            data={prontuario.prontuarios}
-            keyExtractor={prontuario => prontuario.id + new Date()}
-            renderItem={data => <ListItemProntuario data={data} />}
-          />
-        </ContainerListItemProntuario> */}
     </>
   );
 }

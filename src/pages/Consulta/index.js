@@ -10,6 +10,8 @@ import {
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import DatePicker from 'react-native-datepicker';
+import {parseISO, format, addHours} from 'date-fns';
+import ptBrLocale from 'date-fns/locale/pt-BR';
 import {
   Container,
   Inner,
@@ -26,11 +28,15 @@ import {getEnum} from '~/store/modules/enum/actions';
 import {getAllServico} from '~/store/modules/servico/actions';
 import {getAllPaciente} from '~/store/modules/paciente/actions';
 import {createConsulta} from '~/store/modules/consulta/actions';
-
+import {dataSemHoras, dataHoras, valorDinheiro} from '~/util/mask';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
 import * as theme from '~/theme';
-YellowBox.ignoreWarnings(['Warning: DatePickerAndroid has been merged','Warning: TimePickerAndroid has been merged']);
+
+YellowBox.ignoreWarnings([
+  'Warning: DatePickerAndroid has been merged',
+  'Warning: TimePickerAndroid has been merged',
+]);
 
 export default Consulta = ({navigation}) => {
   const dispatch = useDispatch();
@@ -43,13 +49,31 @@ export default Consulta = ({navigation}) => {
   const [error, setError] = useState(null);
   const [pacienteId, setPacienteId] = useState('');
   const [servicoId, setServicoId] = useState('');
-  const [dataConsulta, setDataConsulta] = useState(new Date());
+  const [dataConsulta, setDataConsulta] = useState(
+    consulta.dataConsulta
+      ? consulta.dataConsulta
+      : format(new Date(), 'dd/MM/yyyy', {
+          locale: ptBrLocale,
+        })
+  );
   const [movimentacaoFinanceira, setMovimentacaoFinanceira] = useState(true);
   const [valor, setValor] = useState('');
   const [statusConsulta, setStatusConsulta] = useState('');
   const [observacao, setObservacao] = useState('');
-  const [horaInicio, setHoraInicio] = useState('');
-  const [horaFim, setHoraFim] = useState('');
+  const [horaInicio, setHoraInicio] = useState(
+    consulta.horaInicio
+      ? consulta.horaInicio
+      : format(new Date(), 'hh:mm', {
+          locale: ptBrLocale,
+        })
+  );
+  const [horaFim, setHoraFim] = useState(
+    consulta.horaFim
+      ? consulta.horaFim
+      : format(addHours(new Date(), 1), 'hh:mm', {
+          locale: ptBrLocale,
+        })
+  );
 
   const nomeRef = useRef();
 
@@ -67,6 +91,19 @@ export default Consulta = ({navigation}) => {
   }
 
   function handleSubmit() {
+    if (dataConsulta) {
+      const stringDay = dataConsulta.substring(0, 2);
+      const stringMonth = dataConsulta.substring(3, 5);
+      const stringYear = dataConsulta.substring(6, 10);
+
+      const dayComplete = parseISO(`${stringYear}-${stringMonth}-${stringDay}`);
+
+      if (isNaN(dayComplete)) {
+        setError('Data consulta e inválido');
+        return '';
+      }
+    }
+
     if (!pacienteId) {
       setError('Campo Paciente está vazio');
       return '';
@@ -89,16 +126,19 @@ export default Consulta = ({navigation}) => {
         };
       }
       dispatch(
-        createConsulta({
-          pacienteId,
-          consulta_servico,
-          movimentacao_financeira,
-          statusConsulta,
-          observacao,
-          horaInicio,
-          horaFim,
-          dataConsulta,
-        }, navigation)
+        createConsulta(
+          {
+            pacienteId,
+            consulta_servico,
+            movimentacao_financeira,
+            statusConsulta,
+            observacao,
+            horaInicio,
+            horaFim,
+            dataConsulta,
+          },
+          navigation
+        )
       );
 
       return;
@@ -126,7 +166,13 @@ export default Consulta = ({navigation}) => {
             style={{
               flex: 1,
             }}
-            onValueChange={(itemValue, itemIndex) => setServicoId(itemValue)}>
+            onValueChange={(itemValue, itemIndex) => {
+              const servicoSelecionado = servico.servicos.find(
+                item => item.id === itemValue
+              );
+              setValor(valorDinheiro(servicoSelecionado.valor));
+              setServicoId(itemValue);
+            }}>
             <Picker.Item label="Selecione Serviço" value="" />
             {servico.servicos &&
               servico.servicos.map(item => (
@@ -139,7 +185,9 @@ export default Consulta = ({navigation}) => {
             style={{
               flex: 1,
             }}
-            onValueChange={(itemValue, itemIndex) => setStatusConsulta(itemValue)}>
+            onValueChange={(itemValue, itemIndex) =>
+              setStatusConsulta(itemValue)
+            }>
             <Picker.Item label="Selecione Status" value="" />
             {enumStatusConsulta.enums &&
               enumStatusConsulta.enums.statusConsulta.map(item => (
@@ -150,86 +198,44 @@ export default Consulta = ({navigation}) => {
                 />
               ))}
           </Picker>
-          <DatePicker
-            style={{flex: 1, width: theme.sizes.width, paddingBottom: 20}}
-            date={dataConsulta}
-            mode="date"
-            placeholder="Data inicio"
-            format="DD-MM-YYYY"
-            confirmBtnText="OK"
-            cancelBtnText="Cancel"
-            customStyles={{
-              dateInput: {
-                flex: 1,
-                width: 10,
-                borderTopWidth: 0,
-                borderRightWidth: 0,
-                borderLeftWidth: 0,
-                padding: 25,
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                fontFamily: theme.fonts.MONTSERRAT,
-              },
-              placeholderText: {
-                color: theme.colors.FONTE,
-              },
+          <Input
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Data inicio DD/MM/YYYY"
+            returnKeyType="next"
+            value={dataSemHoras(dataConsulta)}
+            onChangeText={v => {
+              if (v.length < 11) {
+                setDataConsulta(dataSemHoras(v));
+              }
             }}
-            showIcon={false}
-            onDateChange={date => setDataConsulta(date)}
+            keyboardType={'numeric'}
           />
-          <DatePicker
-            style={{flex: 1, width: theme.sizes.width, paddingBottom: 20}}
-            date={horaInicio}
-            mode="time"
-            placeholder="Hora inicio"
-            format="HH:mm"
-            confirmBtnText="OK"
-            cancelBtnText="Cancel"
-            customStyles={{
-              dateInput: {
-                flex: 1,
-                width: 10,
-                borderTopWidth: 0,
-                borderRightWidth: 0,
-                borderLeftWidth: 0,
-                padding: 25,
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                fontFamily: theme.fonts.MONTSERRAT,
-              },
-              placeholderText: {
-                color: theme.colors.FONTE,
-              },
+          <Input
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Hora inicio HH:MM"
+            returnKeyType="next"
+            value={dataHoras(horaInicio)}
+            onChangeText={v => {
+              if (v.length <= 5) {
+                setHoraInicio(dataHoras(v));
+              }
             }}
-            showIcon={false}
-            onDateChange={date => setHoraInicio(date)}
+            keyboardType={'numeric'}
           />
-          <DatePicker
-            style={{flex: 1, width: theme.sizes.width, paddingBottom: 20}}
-            date={horaFim}
-            mode="time"
-            placeholder="Hora Fim"
-            format="HH:mm"
-            confirmBtnText="OK"
-            cancelBtnText="Cancel"
-            customStyles={{
-              dateInput: {
-                flex: 1,
-                width: 10,
-                borderTopWidth: 0,
-                borderRightWidth: 0,
-                borderLeftWidth: 0,
-                padding: 25,
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                fontFamily: theme.fonts.MONTSERRAT,
-              },
-              placeholderText: {
-                color: theme.colors.FONTE,
-              },
+          <Input
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Hora fim HH:MM"
+            returnKeyType="next"
+            value={dataHoras(horaFim)}
+            onChangeText={v => {
+              if (v.length < 5) {
+                setHoraFim(dataHoras(v));
+              }
             }}
-            showIcon={false}
-            onDateChange={date => setHoraFim(date)}
+            keyboardType={'numeric'}
           />
           <Input
             autoCorrect={false}
@@ -256,9 +262,8 @@ export default Consulta = ({navigation}) => {
             autoCapitalize="none"
             placeholder="Valor"
             returnKeyType="next"
-            ref={nomeRef}
-            value={valor}
-            onChangeText={setValor}
+            value={valorDinheiro(valor)}
+            onChangeText={v => setValor(valorDinheiro(v))}
             keyboardType={'numeric'}
           />
           {error && <TextError>{error}</TextError>}

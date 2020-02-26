@@ -6,6 +6,7 @@ import consulta from './consulta/reducer';
 import paciente from './paciente/reducer';
 import prontuario from './prontuario/reducer';
 import servico from './servico/reducer';
+import movimentacaoFinanceira from './movimentacaoFinanceira/reducer';
 
 export default combineReducers({
   auth,
@@ -14,4 +15,5 @@ export default combineReducers({
   paciente,
   prontuario,
   servico,
+  movimentacaoFinanceira,
 });

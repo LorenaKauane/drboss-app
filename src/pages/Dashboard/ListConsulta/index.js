@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Alert, ScrollView} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   Container,
   TextData,
@@ -8,16 +9,43 @@ import {
   ContainerPaciente,
   TextNomePaciente,
   Avatar,
+  ContainerDataButton,
 } from './styles';
 import api from '~/services/api';
+
+import {deleteConsulta} from '~/store/modules/consulta/actions';
+
 const ListConsulta = ({data}) => {
-  const teste = () => {
-    console.log('entrou :C');
+  const dispatch = useDispatch();
+
+  const handleDelete = async id => {
+    const res = await api.delete(`consulta/${id}`);
+
+    if (res.status === 200) {
+      dispatch(deleteConsulta({id}));
+    } else {
+      Alert.alert('Falha!', 'Falhou ao deletar Consulta');
+    }
   };
+
+  const alertDeleteConsulta = id => {
+    Alert.alert(
+      'Alerta',
+      'Deseja realmente excluir essa consulta?',
+      [
+        {
+          text: 'Cancelar',
+          onPress: () => console.log('Cancel Pressed'),
+        },
+        {text: 'OK', onPress: () => handleDelete(id)},
+      ],
+      {cancelable: false}
+    );
+  };
+
   return (
     <ScrollView>
       <Container
-        onPress={teste}
         color={(data.statusConsulta && data.statusConsulta.cor) || '#fff'}>
         <Avatar
           source={{
@@ -55,6 +83,9 @@ const ListConsulta = ({data}) => {
           <TextData> - </TextData>
           <TextData>{data.horaFim}</TextData>
         </ContainerData>
+        <ContainerDataButton onPress={() => alertDeleteConsulta(data.id)}>
+          <Icon name="trash" color="#fff" size={25} />
+        </ContainerDataButton>
       </Container>
     </ScrollView>
   );

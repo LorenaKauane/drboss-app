@@ -1,23 +1,19 @@
 import {Alert} from 'react-native';
 import {takeLatest, call, put, all} from 'redux-saga/effects';
 import api from '~/services/api';
-import {
-  startOfDay,
-  endOfDay,
-  format,
-} from 'date-fns';
+import {startOfDay, endOfDay, format} from 'date-fns';
 import {
   getConsultaSuccess,
   getConsultaFailure,
   createConsultaSuccess,
   createConsultaFailure,
-  getConsulta
+  getConsulta,
 } from './actions';
 
 export function* getConsultas({payload}) {
   try {
-    console.log('payload',payload)
     const {dtInicio, dtFim} = payload;
+    console.log(dtInicio, dtFim);
     const response = yield call(api.get, `consulta/${dtInicio}/${dtFim}`);
     yield put(getConsultaSuccess(response.data));
   } catch (err) {
@@ -37,10 +33,9 @@ export function* salvarConsulta({payload}) {
     let dtInicio = format(startOfDay(new Date()), 'yyyy-MM-dd HH:mm');
     let dtFim = format(endOfDay(new Date()), 'yyyy-MM-dd HH:mm');
     // yield getConsulta({dtInicio,dtFim});
-    yield put(getConsulta(dtInicio,dtFim));
-
+    yield put(getConsulta(dtInicio, dtFim));
   } catch (err) {
-    console.log(err.response.data)
+    console.log(err.response.data);
     Alert.alert('Falha!', 'Falhou ao salvar consulta');
     yield put(createConsultaFailure());
   }

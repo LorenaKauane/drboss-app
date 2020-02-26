@@ -26,9 +26,9 @@ export const ContainerPaciente = styled.View`
 export const ContainerData = styled.TouchableOpacity`
   flex-direction: column;
   align-items: center;
-  background-color:#ff9d8b;
-  padding:10px;
-  border-radius:${theme.sizes.RADIUS_BUTTON};
+  background-color: #fa5132;
+  padding: 10px;
+  border-radius: ${theme.sizes.RADIUS_BUTTON};
 `;
 
 export const TextData = styled.Text`

@@ -6,7 +6,16 @@ import consulta from './consulta/sagas';
 import paciente from './paciente/sagas';
 import prontuario from './prontuario/sagas';
 import servico from './servico/sagas';
+import movimentacaoFinanceira from './movimentacaoFinanceira/sagas';
 
 export default function* rootSaga() {
-  return yield all([auth, enums, consulta, paciente, prontuario, servico]);
+  return yield all([
+    auth,
+    enums,
+    consulta,
+    paciente,
+    prontuario,
+    servico,
+    movimentacaoFinanceira,
+  ]);
 }
