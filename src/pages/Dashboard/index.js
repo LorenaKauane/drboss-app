@@ -90,6 +90,7 @@ export default function Dashboard({navigation}) {
     let fimDia = format(endOfDay(new Date()), 'yyyy-MM-dd HH:mm');
     console.log(inicioDia, fimDia);
     dispatch(getConsulta(inicioDia, fimDia));
+    console.log('entrooo');
   }, []);
 
   useEffect(() => {

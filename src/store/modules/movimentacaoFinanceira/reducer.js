@@ -31,11 +31,19 @@ export default function movimentacao_financeira(state = INITIAL_STATE, action) {
 
       case 'ADD_MOVIMENTACAO_FINANCEIRA': {
         draft.movimentacoes_financeiras.push(action.payload);
+        draft.valorTotal = draft.movimentacoes_financeiras.reduce(
+          (total, valor) => total + parseInt(valor.valor),
+          0
+        );
         draft.loadingMovimentacaoFinanceira = true;
         break;
       }
       case 'CREATE_MOVIMENTACAO_FINANCEIRA_SUCCESS': {
         draft.movimentacoes_financeiras = action.payload;
+        draft.valorTotal = draft.movimentacoes_financeiras.reduce(
+          (total, valor) => total + parseInt(valor.valor),
+          0
+        );
         draft.loadingMovimentacaoFinanceira = true;
         break;
       }
@@ -51,6 +59,10 @@ export default function movimentacao_financeira(state = INITIAL_STATE, action) {
           movimentacao_financeira => movimentacao_financeira.id !== id
         );
         draft.movimentacoes_financeiras = movimentacoes_financeiras;
+        draft.valorTotal = draft.movimentacoes_financeiras.reduce(
+          (total, valor) => total + parseInt(valor.valor),
+          0
+        );
       }
 
       default:

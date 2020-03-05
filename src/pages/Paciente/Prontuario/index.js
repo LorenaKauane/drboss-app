@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {YellowBox, View, ScrollView} from 'react-native';
+import {YellowBox, View, ScrollView, Alert} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import DatePicker from 'react-native-datepicker';
 import {
@@ -68,11 +68,16 @@ export default function CadastroPaciente({navigation}) {
     const options = {
       noData: true,
     };
-    ImagePicker.launchImageLibrary(options, response => {
-      if (response.uri) {
-        setImages(oldArray => [...oldArray, response.uri]);
-      }
-    });
+
+    if (images.length < 3) {
+      ImagePicker.launchImageLibrary(options, response => {
+        if (response.uri) {
+          setImages(oldArray => [...oldArray, response.uri]);
+        }
+      });
+    } else {
+      Alert.alert('Ops!', 'Só e possivel adicionar 3 fotos!');
+    }
   };
 
   function handleSubmit() {
@@ -166,7 +171,7 @@ export default function CadastroPaciente({navigation}) {
         />
         <RowData>
           {/* <TextInfoBold>Anexos </TextInfoBold> */}
-          <ButtonImage onPress={handleChoosePhoto}>
+          <ButtonImage disabled={false} onPress={handleChoosePhoto}>
             <TextInfoWhiteBold>Selecionar Anexos + </TextInfoWhiteBold>
           </ButtonImage>
         </RowData>

@@ -73,7 +73,8 @@ const ListaItemMovimentacao = ({data}) => {
             <TextData>{data.item.consultum.horaFim}</TextData>
           </ContainerData>
         ) : null}
-        <ContainerDataButton onPress={() => alertDeleteConsulta(data.item.id)}>
+        <ContainerDataButton
+          onPress={() => alertDeleteMovimentacao(data.item.id)}>
           <Icon name="trash" color="#fff" size={25} />
         </ContainerDataButton>
       </Container>

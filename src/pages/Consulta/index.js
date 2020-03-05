@@ -294,10 +294,10 @@ Consulta.navigationOptions = {
           <RowHeader>
             <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
               <Icon
-                style={{padding: 24}}
+                style={{padding: 10}}
                 name="chevron-left"
                 color="#fff"
-                size={20}
+                size={40}
               />
             </TouchableOpacity>
 
