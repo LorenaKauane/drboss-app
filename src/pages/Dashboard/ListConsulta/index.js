@@ -11,9 +11,9 @@ import {
   Avatar,
   ContainerDataButton,
 } from './styles';
-import api from '~/services/api';
+import api from '../../../services/api';
 
-import {deleteConsulta} from '~/store/modules/consulta/actions';
+import {deleteConsulta} from '../../../store/modules/consulta/actions';
 
 const ListConsulta = ({data}) => {
   const dispatch = useDispatch();

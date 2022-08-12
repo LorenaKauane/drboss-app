@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView, TouchableOpacity} from 'react-native';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {valorDinheiro} from '~/util/mask';
+import {valorDinheiro} from '../../util/mask';
 import {
   Container,
   Inner,
@@ -15,9 +15,9 @@ import {
   Form,
   List,
 } from './styles';
-import {createServico, getAllServico} from '~/store/modules/servico/actions';
-import Button from '~/components/Button';
-import Input from '~/components/Input';
+import {createServico, getAllServico} from '../../store/modules/servico/actions';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 import ListItemServico from './ListItemServico';
 export default Servico = ({navigation}) => {
   const dispatch = useDispatch();

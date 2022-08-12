@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getEnum} from '~/store/modules/enum/actions';
+import {getEnum} from '../../../store/modules/enum/actions';
 import ListItem from './ListItemStatus';
 import {Container, TextCarregando} from './styles';
 

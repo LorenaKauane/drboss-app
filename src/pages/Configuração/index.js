@@ -14,8 +14,8 @@ import {
   Form,
   List,
 } from './styles';
-import {signOut} from '~/store/modules/auth/actions';
-import Button from '~/components/Button';
+import {signOut} from '../../store/modules/auth/actions';
+import Button from '../../components/Button';
 
 export default Configuracao = ({navigation}) => {
   const dispatch = useDispatch();

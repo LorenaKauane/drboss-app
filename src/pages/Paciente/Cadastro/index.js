@@ -20,7 +20,6 @@ import {
 } from './styles';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import * as theme from '~/theme';
 import Form from './Form';
 import Prontuario from '../Prontuario';
 

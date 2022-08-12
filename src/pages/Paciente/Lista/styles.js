@@ -1,8 +1,8 @@
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import * as theme from '~/theme';
-import Input from '~/components/Input';
+import * as theme from '../../../theme';
+import Input from '../../../components/Input';
 
 export const Container = styled.View`
   flex: 1;

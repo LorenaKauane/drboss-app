@@ -21,16 +21,16 @@ import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import ListItemProntuario from './ListItemProntuario';
 import {format} from 'date-fns';
 import ptBrLocale from 'date-fns/locale/pt-BR';
-import Input from '~/components/Input';
-import Button from '~/components/Button';
+import Input from '../../../components/Input';
+import Button from '../../../components/Button';
 import {
   createProntuario,
   getAllProntuarioPaciente,
-} from '~/store/modules/prontuario/actions';
-import {dataSemHoras} from '~/util/mask';
+} from '../../../store/modules/prontuario/actions';
+import {dataSemHoras} from '../../../util/mask';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import api from '~/services/api';
-import * as theme from '~/theme';
+import api from '../../../services/api';
+import * as theme from '../../../theme';
 
 YellowBox.ignoreWarnings([
   // O flatList por default ja vem com o scrool, porem para poder visualizar o scrool na lateral

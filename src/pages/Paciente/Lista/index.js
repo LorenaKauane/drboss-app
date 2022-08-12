@@ -13,14 +13,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import ListItemPaciente from './ListItemPaciente';
 
-import api from '~/services/api';
 import {
   getAllPaciente,
   getForNomePaciente,
   selecionaPaciente,
-} from '~/store/modules/paciente/actions';
+} from '../../../store/modules/paciente/actions';
 
-import * as theme from '~/theme';
+import * as theme from '../../../theme';
 import {
   Container,
   HeaderBackground,

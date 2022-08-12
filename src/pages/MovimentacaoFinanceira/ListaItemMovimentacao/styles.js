@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
-import * as theme from '~/theme';
-// import api from '~/services/api';
+import * as theme from '../../../theme';
 
 // ou view
 export const Container = styled.View`

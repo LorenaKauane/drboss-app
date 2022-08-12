@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Picker, YellowBox,  SafeAreaView} from 'react-native';
+import { YellowBox,  SafeAreaView} from 'react-native';
+import {Picker} from '@react-native-picker/picker'
 import ImagePicker from 'react-native-image-picker';
 import {
   Form,
@@ -12,13 +13,13 @@ import {
   TextInfoBold,
 } from './styles';
 
-import Input from '~/components/Input';
-import Button from '~/components/Button';
-import Separator from '~/components/Separator';
-import {createPaciente, alterPaciente} from '~/store/modules/paciente/actions';
+import Input from '../../../../components/Input';
+import Button from '../../../../components/Button';
+import Separator from '../../../../components/Separator';
+import {createPaciente, alterPaciente} from '../../../../store/modules/paciente/actions';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import api from '~/services/api';
-import * as theme from '~/theme';
+import api from '../../../../services/api';
+import * as theme from '../../../../theme';
 
 YellowBox.ignoreWarnings([
   // O flatList por default ja vem com o scrool, porem para poder visualizar o scrool na lateral

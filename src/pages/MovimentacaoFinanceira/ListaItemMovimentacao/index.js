@@ -12,9 +12,9 @@ import {
   ContainerDataButton,
 } from './styles';
 import {format, parseISO} from 'date-fns';
-import api from '~/services/api';
-import {valorDinheiro} from '~/util/mask';
-import {deleteMovimentacaoFinanceira} from '~/store/modules/movimentacaoFinanceira/actions';
+import api from '../../../services/api';
+import {valorDinheiro} from '../../../util/mask';
+import {deleteMovimentacaoFinanceira} from '../../../store/modules/movimentacaoFinanceira/actions';
 
 const ListaItemMovimentacao = ({data}) => {
   const dispatch = useDispatch();

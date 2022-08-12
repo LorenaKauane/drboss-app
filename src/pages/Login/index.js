@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   Keyboard,
   TouchableWithoutFeedback,
@@ -16,15 +16,15 @@ import {
   Form,
   TextoCadastro,
   TextError,
-  TextTermoCondicao
+  TextTermoCondicao,
 } from './styles';
 
-import Input from '~/components/Input';
-import Button from '~/components/Button';
-import Separator from '~/components/Separator'
-import { signInRequest } from '~/store/modules/auth/actions';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import Separator from '../../components/Separator';
+import {signInRequest} from '../../store/modules/auth/actions';
 
-export default function Login({ navigation }) {
+export default function Login({navigation}) {
   const dispatch = useDispatch();
   const emailRef = useRef();
 
@@ -47,9 +47,8 @@ export default function Login({ navigation }) {
     if (!loading) {
       setError(null);
       dispatch(signInRequest(email, senha));
-      return ;
+      return;
     }
-
   };
 
   return (
@@ -61,7 +60,7 @@ export default function Login({ navigation }) {
             <LogoTexto>DrBoss</LogoTexto>
           </HeaderBackground>
           <Form>
-          {error && <TextError>{error}</TextError>}
+            {error && <TextError>{error}</TextError>}
             <Input
               autoCorrect={false}
               autoCapitalize="none"
@@ -85,10 +84,13 @@ export default function Login({ navigation }) {
               onChangeText={setSenha}
             />
 
-            <Button loading={loading} disabled={loading} onPress={handleSubmit}>Entrar</Button>
+            <Button loading={loading} disabled={loading} onPress={handleSubmit}>
+              Entrar
+            </Button>
             <Separator />
             <Secao>
-              <TouchableOpacity onPress={() => navigation.navigate('CadastroUsuario')}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('CadastroUsuario')}>
                 <TextoCadastro>Cadastre-se</TextoCadastro>
               </TouchableOpacity>
             </Secao>

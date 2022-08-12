@@ -2,7 +2,7 @@ import React, {forwardRef} from 'react';
 import {Container, InputEstilizado} from './styles';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import * as theme from '~/theme';
+import * as theme from '../../theme';
 
 function Input({ style, icon, ...rest }, ref) {
     return (

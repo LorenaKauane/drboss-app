@@ -4,9 +4,9 @@ import {
   YellowBox,
   ScrollView,
   TouchableOpacity,
-  Picker,
   Text,
 } from 'react-native';
+import {Picker} from '@react-native-picker/picker'
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import DatePicker from 'react-native-datepicker';
@@ -24,14 +24,14 @@ import {
   List,
 } from './styles';
 
-import {getEnum} from '~/store/modules/enum/actions';
-import {getAllServico} from '~/store/modules/servico/actions';
-import {getAllPaciente} from '~/store/modules/paciente/actions';
-import {createConsulta} from '~/store/modules/consulta/actions';
-import {dataSemHoras, dataHoras, valorDinheiro} from '~/util/mask';
-import Button from '~/components/Button';
-import Input from '~/components/Input';
-import * as theme from '~/theme';
+import {getEnum} from '../../store/modules/enum/actions';
+import {getAllServico} from '../../store/modules/servico/actions';
+import {getAllPaciente} from '../../store/modules/paciente/actions';
+import {createConsulta} from '../../store/modules/consulta/actions';
+import {dataSemHoras, dataHoras, valorDinheiro} from '../../util/mask';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+import * as theme from '../../theme';
 
 YellowBox.ignoreWarnings([
   'Warning: DatePickerAndroid has been merged',

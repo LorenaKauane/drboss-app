@@ -11,12 +11,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {LocaleConfig} from 'react-native-calendars';
-import api from '~/services/api';
-import {signOut} from '~/store/modules/auth/actions';
-import {getConsulta} from '~/store/modules/consulta/actions';
+import api from '../../services/api';
+import {signOut} from '../../store/modules/auth/actions';
+import {getConsulta} from '../../store/modules/consulta/actions';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import * as theme from '~/theme';
+import * as theme from '../../theme';
 import ListStatus from './ListStatus';
 import ListConsulta from './ListConsulta';
 import {
@@ -88,9 +88,7 @@ export default function Dashboard({navigation}) {
   useEffect(() => {
     let inicioDia = format(startOfDay(new Date()), 'yyyy-MM-dd HH:mm');
     let fimDia = format(endOfDay(new Date()), 'yyyy-MM-dd HH:mm');
-    console.log(inicioDia, fimDia);
     dispatch(getConsulta(inicioDia, fimDia));
-    console.log('entrooo');
   }, []);
 
   useEffect(() => {

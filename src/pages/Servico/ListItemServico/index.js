@@ -9,8 +9,8 @@ import {
   ContainerPaciente,
   TextNomePaciente,
 } from './styles';
-import {deleteServico} from '~/store/modules/servico/actions';
-import api from '~/services/api';
+import {deleteServico} from '../../../store/modules/servico/actions';
+import api from '../../../services/api';
 const ListItemServico = ({data}) => {
   const dispatch = useDispatch();
 

@@ -1,7 +1,7 @@
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import * as theme from '~/theme';
+import * as theme from '../../theme';
 
 export const KeyBoard = styled.KeyboardAvoidingView.attrs({
   behavior: Platform.OS === 'ios' ? 'padding' : null,

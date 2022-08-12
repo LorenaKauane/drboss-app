@@ -1,8 +1,8 @@
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import * as theme from '~/theme';
-import Input from '~/components/Input';
+import * as theme from '../../theme';
+import Input from '../../components/Input';
 
 export const Container = styled.View`
   flex: 1;
@@ -19,6 +19,7 @@ export const HeaderBackground = styled(LinearGradient).attrs({
   height: ${theme.sizes.IMAGE_HEIGHT - 25};
   border-bottom-left-radius: 60;
   border-bottom-right-radius: 60;
+  padding-top: 30px;
 `;
 
 export const RowHeader = styled.View`

@@ -10,11 +10,11 @@ import {
   TextNomePaciente,
   Avatar,
 } from './styles';
-import api from '~/services/api';
+import api from '../../../../services/api';
 import {
   deletePaciente,
   selecionaPaciente,
-} from '~/store/modules/paciente/actions';
+} from '../../../../store/modules/paciente/actions';
 
 const ListItemPaciente = ({data, navigation}) => {
   const dispatch = useDispatch();

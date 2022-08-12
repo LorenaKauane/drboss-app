@@ -21,12 +21,12 @@ import {
   HeaderBackground,
 } from './styles';
 
-import Input from '~/components/Input';
-import Button from '~/components/Button';
-import Separator from '~/components/Separator';
-import {signUpRequest} from '~/store/modules/auth/actions';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import Separator from '../../components/Separator';
+import {signUpRequest} from '../../store/modules/auth/actions';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import * as theme from '~/theme';
+import * as theme from '../../theme';
 
 export default function Cadastro({navigation}) {
   const dispatch = useDispatch();

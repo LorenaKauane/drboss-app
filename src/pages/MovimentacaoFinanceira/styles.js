@@ -1,6 +1,6 @@
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
-import * as theme from '~/theme';
+import * as theme from '../../theme';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const KeyBoard = styled.KeyboardAvoidingView.attrs({
@@ -23,6 +23,7 @@ export const HeaderBackground = styled(LinearGradient).attrs({
   height: 80;
   border-bottom-left-radius: 60;
   border-bottom-right-radius: 60;
+  padding-top: 30px;
 `;
 
 export const TituloPagina = styled.Text`

@@ -11,8 +11,8 @@ import {
   ProvidersList,
   ImagePaciente,
 } from './styles';
-import api from '~/services/api';
-import {deleteProntuario} from '~/store/modules/prontuario/actions';
+import api from '../../../../services/api';
+import {deleteProntuario} from '../../../../store/modules/prontuario/actions';
 
 const ListItemProntuario = ({data, navigation}) => {
   const dispatch = useDispatch();

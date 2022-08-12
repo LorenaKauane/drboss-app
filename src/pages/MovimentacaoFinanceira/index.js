@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView, TouchableOpacity} from 'react-native';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {valorDinheiro, dataSemHoras} from '~/util/mask';
-import * as theme from '~/theme';
+import {valorDinheiro, dataSemHoras} from '../../util/mask';
+import * as theme from '../../theme';
 import {
   Container,
   Inner,
@@ -21,7 +21,7 @@ import {
 import {
   createMovimentacaoFinanceira,
   getAllMovimentacaoFinanceira,
-} from '~/store/modules/movimentacaoFinanceira/actions';
+} from '../../store/modules/movimentacaoFinanceira/actions';
 import {
   format,
   startOfDay,
@@ -31,8 +31,8 @@ import {
   endOfMonth,
 } from 'date-fns';
 import ptBrLocale from 'date-fns/locale/pt-BR';
-import Button from '~/components/Button';
-import Input from '~/components/Input';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 
 import ListaItemMovimentacao from './ListaItemMovimentacao';
 export default MovimentacaoFinanceira = ({navigation}) => {
